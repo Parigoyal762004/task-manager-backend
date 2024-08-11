@@ -22,7 +22,7 @@ mongoose.connect(MONGO_URI)
 
 // CORS configuration
 app.use(cors({
-  origin: 'https://startling-pothos-3ddacf.netlify.app/', // Replace with your actual frontend URL
+  origin: '*', // Replace with your actual frontend URL
 }));
 
 app.use(express.json());
