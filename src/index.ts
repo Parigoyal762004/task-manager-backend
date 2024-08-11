@@ -1,5 +1,3 @@
-// src/index.ts
-
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -22,15 +20,16 @@ mongoose.connect(MONGO_URI)
     process.exit(1);
   });
 
+// CORS configuration
+app.use(cors({
+  origin: 'https://startling-pothos-3ddacf.netlify.app/', // Replace with your actual frontend URL
+}));
 
-  app.use(cors({
-    origin: 'http://localhost:3000', // Adjust to your frontend origin
-  }));
 app.use(express.json());
 
 // Use routes
 app.use('/tasks', taskRoutes); // Ensure this path is correct
-app.use('/auth', authRoutes); // Ensure this path is correct
+app.use('/auth', authRoutes);  // Ensure this path is correct
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
